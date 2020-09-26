@@ -17,8 +17,10 @@ class Exercise_one extends CI_Controller {
 
 	public function index()
 	{
+		$result = array();
+		$result['list'] = $this->exercise_one->get_router_listing();
 		$this->load->view('exercise_one/header');
-		$this->load->view('exercise_one/index');
+		$this->load->view('exercise_one/list', $result);
 		$this->load->view('exercise_one/footer');
 	}
 
@@ -159,6 +161,7 @@ class Exercise_one extends CI_Controller {
 		}
 
 		echo PHP_EOL;
-		echo "$num - record inserted";
+		echo "$num - record inserted/Updated.";
+		echo PHP_EOL;
 	}
 }

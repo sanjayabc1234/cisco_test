@@ -21,7 +21,17 @@ class Exercise_one_model extends CI_Model {
 
 	function add_data($data)
 	{
-		return $this->db->insert('router_properties', $data);
+
+		$insert_query = $this->db->insert_string('router_properties', $data);
+		$insert_query = str_replace('INSERT INTO','INSERT IGNORE INTO',$insert_query);
+		return $this->db->query($insert_query);
+
+		// try {
+		// 	$this->db->insert('router_properties', $data);
+		// } catch (Exception $e) {
+		// 	return false;
+		// }
+
 	}
 
 	function delete_data($router_id)
