@@ -16,3 +16,11 @@ CREATE TABLE IF NOT EXISTS `cisco_test`.`router_properties` (
     UNIQUE (hostname,loopback)
 )  ENGINE=INNODB; 
 
+CREATE TABLE IF NOT EXISTS `cisco_test`.`api_tokens` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT,
+    `token` VARCHAR(255) NOT NULL,
+    `customer_id` INT(5) NOT NULL,
+    `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+)  ENGINE=INNODB; 
+

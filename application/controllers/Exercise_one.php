@@ -133,9 +133,9 @@ class Exercise_one extends CI_Controller {
 			return false;
 		}
 
-		echo PHP_EOL, "Starting in 10 secs", PHP_EOL;
+		echo PHP_EOL, "Exercise 1 - Q3 - starting in 5 secs", PHP_EOL;
 
-		for ($i=1; $i <= 10 ; $i++) {
+		for ($i=1; $i <= 5; $i++) {
 			echo $i,PHP_EOL;
 			sleep(1);
 		}
