@@ -116,4 +116,49 @@ class Exercise_one extends CI_Controller {
 		echo json_encode($payload);
 		return false;
 	}
+
+	function cli_entry($num)
+	{
+		if($this->input->is_cli_request() == FALSE){
+			echo "Its PHP CLI based Controller\n" . PHP_EOL;
+			echo "Cant be run from browser\n" . PHP_EOL;
+			exit();
+		}
+
+		$num = (int)$num;
+		if ($num <= 0) {
+			echo "Invalid number. Must be greater than 0";
+			return false;
+		}
+
+		echo PHP_EOL, "Starting in 10 secs", PHP_EOL;
+
+		for ($i=1; $i <= 10 ; $i++) {
+			echo $i,PHP_EOL;
+			sleep(1);
+		}
+
+		for ($i=1; $i <= $num ; $i++) {
+
+			$data = array(
+				'sap_id' => '12:12:34:65-e3:t5:87:5411:' . $i,
+				'hostname' => 'https://www.example.com/router/' . $i,
+				'loopback' => '192.168.1.111:' . $i,
+				'mac_address' => '02:42:a8:4a:80:' . $i
+			);
+
+			echo implode(", ", $data);
+
+			$status = $this->exercise_one->add_data($data);
+
+			if (!empty($status)) {
+				echo " - inserted." , PHP_EOL;
+			}else{
+				echo " - failed." , PHP_EOL;
+			}
+		}
+
+		echo PHP_EOL;
+		echo "$num - record inserted";
+	}
 }
